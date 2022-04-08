@@ -1,0 +1,5 @@
+
+namespace lighten
+{
+void Test();
+}

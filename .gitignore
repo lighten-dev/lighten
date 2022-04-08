@@ -1,0 +1,4 @@
+## Notepad++ files
+*.bak
+
+_build

@@ -71,7 +71,7 @@ function(target_add_stb TARGET)
 endfunction(target_add_stb)
 
 function(target_add_glm TARGET)
-  target_include_directories("${TARGET}" PRIVATE "${GLM_DIR}")
+  target_include_directories("${TARGET}" PRIVATE "${GLM_DIR}/glm")
 endfunction(target_add_glm)
 
 function(target_add_freetype TARGET)

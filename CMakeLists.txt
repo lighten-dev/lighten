@@ -35,6 +35,6 @@ function(set_warnings project)
 endfunction(set_warnings)
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/third_party/CMakeLists.txt")
-add_subdirectory(engine)
+add_subdirectory(lighten)
 add_subdirectory(editor)
 add_subdirectory(tests)

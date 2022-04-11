@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.22)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "clang++")
+
 
 project(lighten LANGUAGES CXX C)
 
@@ -19,8 +22,19 @@ function(mvs_update_filters SOURCES)
     endforeach()
 endfunction(mvs_update_filters)
 
+function(set_warnings project)
+  if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(${project} PRIVATE -Wall -Wextra -Wpedantic -Werror)
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(${project}  PRIVATE -Wall -Wextra -Wpedantic -Werror)
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+    target_compile_options(${project}  PRIVATE -Wall -Werror-all)
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(${project} PRIVATE /W4 /WX)
+  endif()
+endfunction(set_warnings)
 
-add_subdirectory(third_party)
+include("${CMAKE_CURRENT_SOURCE_DIR}/third_party/CMakeLists.txt")
 add_subdirectory(engine)
 add_subdirectory(editor)
 add_subdirectory(tests)

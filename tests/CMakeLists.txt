@@ -8,11 +8,12 @@ if(LIGHTEN_ENABLE_TESTS)
   mvs_update_filters("${LIGHTEN_TEST_SOURCES}")
   
   add_executable(runUnitTests ${LIGHTEN_TEST_SOURCES})
-  
-  target_compile_options(runUnitTests PRIVATE -Wall -Wextra -Wpedantic)
+  set_warnings(runUnitTests)
+  target_include_directories(runUnitTests PRIVATE ${LIGHTEN_SOURCES_DIR})
+  target_include_directories(runUnitTests PRIVATE ${EDITOR_SOURCES_DIR})
 
   target_link_libraries(runUnitTests gtest gtest_main)
-  target_add_libraries(runUnitTests "glm" "glad" "glfw" "gtest")
+  target_add_libraries(runUnitTests "glm" "glad" "glfw" "freetype" "stb" "spdlog" "gtest")
   
   add_test(NAME TEST COMMAND runUnitTests)
 

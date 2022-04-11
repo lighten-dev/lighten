@@ -6,7 +6,8 @@ add_executable(editor ${EDITOR_SOURCES})
 
 target_link_libraries(editor engine)
 target_add_libraries(editor "glm" "glad" "glfw" "freetype" "stb" "spdlog")
-
-target_compile_options(editor PRIVATE -Wall -Wextra -Wpedantic)
+set_warnings(editor)
+target_include_directories(editor PRIVATE ${LIGHTEN_SOURCES_DIR})
+target_include_directories(editor PRIVATE ${EDITOR_SOURCES_DIR})
 
 set_target_properties(editor PROPERTIES LINKER_LANGUAGE CXX)

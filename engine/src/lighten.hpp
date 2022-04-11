@@ -1,5 +1,4 @@
 
-namespace lighten
-{
+namespace lighten {
 void Test();
 }

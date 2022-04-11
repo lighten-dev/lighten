@@ -1,7 +1,5 @@
-#include <iostream>
-
 #include "lighten.hpp"
 
-void lighten::Test() {
-    std::cout << "Test";
-}
+#include <iostream>
+
+void lighten::Test() { std::cout << "Test"; }
